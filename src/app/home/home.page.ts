@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { sunmiprintercjp, sunmiprintercjpPlugin } from 'sunmi-printer-ionic-plugin-cjp';
+import { sunmiPlugin, sunmiPluginPlugin } from 'sunmi-plugin';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -10,14 +10,13 @@ export class HomePage {
 
   constructor() {}
  
-    async callEcho() {
-      try {
-        const response = await sunmiprintercjp.echo({ value: 'Hello, Sunmi Printer!' });
-        console.log(response.value); // Logs: 'Hello, Sunmi Printer!'
-      } catch (error) {
-        console.error('Error calling echo:', error);
-      }
-    
+  async  search() {
+    try {
+      await sunmiPlugin.searchPrinter({ method: 1 });
+      console.log('Search started');
+    } catch (error) {
+      console.error('Search error:', error);
+    }
   }
  
 }
